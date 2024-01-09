@@ -21,9 +21,8 @@ make
 ./makedeb
 ### since you do not have sudo access sudo apt install is not usable, use the following
 echo 'export PATH=$PATH:~/PRB/nHUSH/bin/' >> ~/.bashrc
-### /PRB added as the PATH
+### /PRB added for the correct PATH
 source ~/.bashrc
-
 
 # 3.2) Install hush
 echo "3.2) installing hush..."
@@ -31,17 +30,20 @@ cd ~/PRB/hush
 make all -B
 export MANPATH="$(man --path):`pwd`/man"
 export PATH="$PATH:`pwd`/bin/"
+## NO errors, SUCCESS?
 
 # 3.3) Install escafish
 echo "3.3) installing escafish..."
 cd ~/PRB/escafish
 make install
+## cp: cannot create regular file '/usr/local/bin/escafish': Permission denied
 
 # 3.4) Install OligoArrayAux
 ### since no sudo access we can install the
 echo "3.4) installing oligoarrayaux..."
-cd ~/PRB/oligoarrayaux
+cd ~/PRB
 rpm2cpio oligoarrayaux-3.8-1.x86_64.rpm | cpio -idv
+## SUCCESS
 
 # 5) Clone and pip Install GG's oligo-melting
 echo "5) installing oligo-melting..."
