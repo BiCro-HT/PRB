@@ -13,11 +13,9 @@ pip install probe_design
 ## this will also install pip installable dependencies including ifpd2q
 ## tried this part: SUCCESS
 
-
-# 3) Clone and Unzip PRB to Home
-# TODO
-
+#  Installing non-pip dependencies
 ## 3.1) Install nHUSH
+echo "3.1) installing nHUSH..."
 cd ~/PRB/nHUSH
 make
 ./makedeb
@@ -27,22 +25,26 @@ echo 'export PATH=$PATH:~/PRB/nHUSH/bin/' >> ~/.bashrc
 source ~/.bashrc
 
 
-# 3.2) Install HUSH
-cd ~/PRB/HUSH
+# 3.2) Install hush
+echo "3.2) installing hush..."
+cd ~/PRB/hush
 make all -B
 export MANPATH="$(man --path):`pwd`/man"
 export PATH="$PATH:`pwd`/bin/"
 
 # 3.3) Install escafish
+echo "3.3) installing escafish..."
 cd ~/PRB/escafish
 make install
 
 # 3.4) Install OligoArrayAux
 ### since no sudo access we can install the
+echo "3.4) installing oligoarrayaux..."
 cd ~/PRB/oligoarrayaux
 rpm2cpio oligoarrayaux-3.8-1.x86_64.rpm | cpio -idv
 
 # 5) Clone and pip Install GG's oligo-melting
+echo "5) installing oligo-melting..."
 cd ~/PRB
 git clone http://github.com/ggirelli/oligo-melting
 cd oligo-melting
