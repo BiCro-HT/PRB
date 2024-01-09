@@ -9,7 +9,7 @@ If you don't have access, zafer.kosar@external.fht.org
 ### tldr version
 
 ```shell
-git clone https://github.com/BiCro-HT/PRB.git ~/
+git clone https://github.com/BiCro-HT/PRB.git ~/PRB
 cd ~/PRB
 openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf -
 mv ~/PRB/PRB/* ~/PRB
@@ -22,7 +22,7 @@ bash ~/PRB/install.sh
 1. Clone this repository to your home directory at HPC
 
 ```shell
-git clone https://github.com/BiCro-HT/PRB.git ~/
+git clone https://github.com/BiCro-HT/PRB.git ~/PRB
 ```
 
 2. Change directory to PRB folder
