@@ -34,9 +34,12 @@ export PATH="$PATH:`pwd`/bin/"
 
 # 3.3) Install escafish
 echo "3.3) installing escafish..."
+mkdir ~/.local/man # if they do not exist, in my case they did not
+mkdir ~/.local/man/man1
 cd ~/PRB/escafish
 make install
-## cp: cannot create regular file '/usr/local/bin/escafish': Permission denied
+## cp: cannot create regular file '/usr/local/bin/escafish': Permission denied ^
+### SOlVED
 
 # 3.4) Install OligoArrayAux
 ### since no sudo access we can install the
@@ -52,4 +55,4 @@ git clone http://github.com/ggirelli/oligo-melting
 cd oligo-melting
 pip3 install .
 cd ~/PRB
-### tried this part: SUCCESS
+## SUCCESS
