@@ -1,6 +1,7 @@
 # Full Installation of Q.probe_design and its dependencies
 
 # 1) load python 3.11.5, requires >=python3.10
+echo "1) loading python 3.11.5..."
 export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH
 module load python/3.11.5
 module load python-3.11.5/py-pip/23.0
@@ -9,6 +10,7 @@ echo -e "python3 --version\n$(python3 --version)" # just to show python version
 
 
 # 2) probe_design is pip installable 
+echo "2) installing probe_design..."
 pip install probe_design
 ## this will also install pip installable dependencies including ifpd2q
 ## tried this part: SUCCESS
@@ -41,9 +43,9 @@ make install
 ## cp: cannot create regular file '/usr/local/bin/escafish': Permission denied ^
 ### SOlVED
 
-# 3.4) Install OligoArrayAux
+# 4) Install OligoArrayAux
 ### since no sudo access we can install the
-echo "3.4) installing oligoarrayaux..."
+echo "4) installing oligoarrayaux..."
 cd ~/PRB
 rpm2cpio oligoarrayaux-3.8-1.x86_64.rpm | cpio -idv
 ## SUCCESS
