@@ -1,19 +1,48 @@
+#!/bin/bash
+
 # Full Installation of Q.probe_design and its dependencies
 
-# 1) load python 3.11.5, requires >=python3.10
-echo "1) loading python 3.11.5..."
+# 0) load python 3.11.5, requires >=python3.10
 export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH
 module load python/3.11.5
 module load python-3.11.5/py-pip/23.0
 echo -e "python3 --version\n$(python3 --version)" # just to show python version
 ## tried this part: SUCCESS
+echo -e "\n\n"
 
 
-# 2) probe_design is pip installable 
-echo "2) installing probe_design..."
+# 1) probe_design is pip installable 
 pip install probe_design
 ## this will also install pip installable dependencies including ifpd2q
 ## tried this part: SUCCESS
+echo -e "\n\n"
+
+# 2.1) download and install readline
+echo "2.1) download and install readline"
+cd ~
+wget https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz
+tar -xvf readline-8.2.tar.gz
+cd readline-8.2
+./configure --prefix=$HOME/readline
+make
+make install
+export LD_LIBRARY_PATH=$HOME/readline/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$HOME/readline/lib/pkgconfig:$PKG_CONFIG_PATH
+export C_INCLUDE_PATH=$HOME/readline/include:$C_INCLUDE_PATH
+echo -e "\n\n"
+
+# 2.2) download and isntall liblua5.4.6
+echo "2.2) download and compile"
+cd ~
+curl -L -R -O https://www.lua.org/ftp/lua-5.4.6.tar.gz
+tar zxf lua-5.4.6.tar.gz
+cd lua-5.4.6
+make linux # or make macos, depending on your system
+make INSTALL_TOP=$HOME install
+export PKG_CONFIG_PATH=$HOME/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
+export C_INCLUDE_PATH=$HOME/include:$C_INCLUDE_PATH
+echo -e "\n\n"
 
 #  Installing non-pip dependencies
 ## 3.1) Install nHUSH
@@ -23,8 +52,9 @@ make
 ./makedeb
 ### since you do not have sudo access sudo apt install is not usable, use the following
 echo 'export PATH=$PATH:~/PRB/nHUSH/bin/' >> ~/.bashrc
-### /PRB added for the correct PATH
+### /PRB added as the PATH
 source ~/.bashrc
+echo -e "\n\n"
 
 # 3.2) Install hush
 echo "3.2) installing hush..."
@@ -32,23 +62,20 @@ cd ~/PRB/hush
 make all -B
 export MANPATH="$(man --path):`pwd`/man"
 export PATH="$PATH:`pwd`/bin/"
-## NO errors, SUCCESS?
+echo -e "\n\n"
 
 # 3.3) Install escafish
 echo "3.3) installing escafish..."
-mkdir ~/.local/man # if they do not exist, in my case they did not
-mkdir ~/.local/man/man1
 cd ~/PRB/escafish
 make install
-## cp: cannot create regular file '/usr/local/bin/escafish': Permission denied ^
-### SOlVED
+echo -e "\n\n"
 
-# 4) Install OligoArrayAux
+# 3.4) Install OligoArrayAux
 ### since no sudo access we can install the
-echo "4) installing oligoarrayaux..."
+echo "3.4) installing oligoarrayaux..."
 cd ~/PRB
 rpm2cpio oligoarrayaux-3.8-1.x86_64.rpm | cpio -idv
-## SUCCESS
+echo -e "\n\n"
 
 # 5) Clone and pip Install GG's oligo-melting
 echo "5) installing oligo-melting..."
@@ -57,4 +84,4 @@ git clone http://github.com/ggirelli/oligo-melting
 cd oligo-melting
 pip3 install .
 cd ~/PRB
-## SUCCESS
+### tried this part: SUCCESS
