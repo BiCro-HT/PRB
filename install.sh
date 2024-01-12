@@ -17,6 +17,12 @@ wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.
 unzip ninja-linux.zip
 export PATH=$PWD:$PATH
 
+meson setup builddir --buildtype release
+cd builddir
+meson compile
+meson install
+echo -e "\n\n"
+
 
 ## move things inside PRB/PRB/ to PRB/
 mv ~/PRB/PRB/* ~/PRB/
