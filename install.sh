@@ -50,19 +50,20 @@ wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.
 unzip ninja-linux.zip
 export PATH=$PWD:$PATH
 
-cd nHUSH
+
+
+#  Installing non-pip dependencies
+## 1) Install nHUSH
+echo "1) installing nHUSH..."
+cd ~/PRB/nHUSH
 meson setup builddir --buildtype release
 cd builddir
 meson compile
 meson install
 echo -e "\n\n"
 
-#  Installing non-pip dependencies
-## 1) Install nHUSH
-echo "1) installing nHUSH..."
-cd ~/PRB/nHUSH
-make
-./makedeb
+#make
+#./makedeb
 ### since you do not have sudo access sudo apt install is not usable, use the following
 echo 'export PATH=$PATH:~/PRB/nHUSH/bin/' >> ~/.bashrc
 ### /PRB added as the PATH
