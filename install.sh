@@ -2,6 +2,22 @@
 
 # Full Installation of Q.probe_design and its dependencies
 
+# 5) load python 3.11.5, requires >=python3.10
+export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH
+module load python/3.11.5
+module load python-3.11.5/py-pip/23.0
+echo -e "python3 --version\n$(python3 --version)" # just to show python version
+## tried this part: SUCCESS
+echo -e "\n\n"
+
+# install meson and ninja
+pip install meson
+cd ~/PRB
+wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip 
+unzip ninja-linux.zip
+export PATH=$PWD:$PATH
+
+
 ## move things inside PRB/PRB/ to PRB/
 mv ~/PRB/PRB/* ~/PRB/
 export PATH=~/.local/bin:$PATH # add it to the PATH
@@ -69,13 +85,7 @@ rpm2cpio oligoarrayaux-3.8-1.x86_64.rpm | cpio -idv
 echo -e "\n\n"
 
 
-# 5) load python 3.11.5, requires >=python3.10
-export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH
-module load python/3.11.5
-module load python-3.11.5/py-pip/23.0
-echo -e "python3 --version\n$(python3 --version)" # just to show python version
-## tried this part: SUCCESS
-echo -e "\n\n"
+
 
 
 # 6) probe_design is pip installable 
