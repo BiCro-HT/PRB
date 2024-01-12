@@ -50,6 +50,7 @@ wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.
 unzip ninja-linux.zip
 export PATH=$PWD:$PATH
 
+cd nHUSH
 meson setup builddir --buildtype release
 cd builddir
 meson compile
