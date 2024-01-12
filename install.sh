@@ -10,20 +10,6 @@ echo -e "python3 --version\n$(python3 --version)" # just to show python version
 ## tried this part: SUCCESS
 echo -e "\n\n"
 
-# install meson and ninja
-pip install meson
-cd ~/PRB
-wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip 
-unzip ninja-linux.zip
-export PATH=$PWD:$PATH
-
-meson setup builddir --buildtype release
-cd builddir
-meson compile
-meson install
-echo -e "\n\n"
-
-
 ## move things inside PRB/PRB/ to PRB/
 mv ~/PRB/PRB/* ~/PRB/
 export PATH=~/.local/bin:$PATH # add it to the PATH
@@ -56,6 +42,19 @@ export LD_LIBRARY_PATH=$HOME/PRB/lib:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH=$HOME/PRB/include:$C_INCLUDE_PATH
 echo -e "\n\n"
 # WORKS but 3.1 errors out 
+
+# 0.5) install meson and ninja
+pip install meson
+cd ~/PRB
+wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip 
+unzip ninja-linux.zip
+export PATH=$PWD:$PATH
+
+meson setup builddir --buildtype release
+cd builddir
+meson compile
+meson install
+echo -e "\n\n"
 
 #  Installing non-pip dependencies
 ## 1) Install nHUSH
