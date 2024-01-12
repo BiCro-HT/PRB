@@ -4,7 +4,7 @@ IMPORTANT: change **your_password** with the password provided by Zafer Kosar.
 If you don't have access, zafer.kosar@external.fht.org
 
 
-## tldr version
+## TLDR version
 
 1. Copy and paste this to text editor
 2. modify **your_password** with the real password
@@ -13,17 +13,14 @@ If you don't have access, zafer.kosar@external.fht.org
 ```shell
 git clone https://github.com/BiCro-HT/PRB.git ~/PRB
 cd ~/PRB
-openssl enc -d -aes-256-cbc -pass pass:your_password -in /PRB.tar.gz.enc | tar xzf -
-mv ~/PRB/PRB/* ~/PRB/
-export PATH=~/.local/bin:$PATH
+openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf -
 bash ~/PRB/install.sh
-
 
 ```
 
-## Open a bash terminal and follow the instructions below
+## Step-by-step
 
-### Step-by-step
+### Open a bash terminal and follow the instructions below
 
 1. Clone this repository to your home directory at HPC
 
@@ -43,14 +40,8 @@ cd ~/PRB
 openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf -
 ```
 
-4. Move the folders from ~/PRB/PRB to ~/PRB
 
-```shell
-mv ~/PRB/PRB/* ~/PRB
-
-```
-
-5. Run the install.sh
+4. Run the install.sh
 
 ```shell
 bash ~/PRB/install.sh

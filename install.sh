@@ -2,6 +2,10 @@
 
 # Full Installation of Q.probe_design and its dependencies
 
+## move things inside PRB/PRB/ to PRB/
+mv ~/PRB/PRB/* ~/PRB/
+export PATH=~/.local/bin:$PATH # add it to the PATH
+
 # 0) load python 3.11.5, requires >=python3.10
 export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH
 module load python/3.11.5
@@ -19,30 +23,30 @@ echo -e "\n\n"
 
 # 2.1) download and install readline
 echo "2.1) download and install readline"
-cd ~
+cd ~/PRB
 wget https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz
 tar -xvf readline-8.2.tar.gz
 cd readline-8.2
-./configure --prefix=$HOME/readline
+./configure --prefix=$HOME/PRB/readline
 make
 make install
-export LD_LIBRARY_PATH=$HOME/readline/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$HOME/readline/lib/pkgconfig:$PKG_CONFIG_PATH
-export C_INCLUDE_PATH=$HOME/readline/include:$C_INCLUDE_PATH
+export LD_LIBRARY_PATH=$HOME/PRB/readline/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$HOME/PRB/readline/lib/pkgconfig:$PKG_CONFIG_PATH
+export C_INCLUDE_PATH=$HOME/PRB/readline/include:$C_INCLUDE_PATH
 echo -e "\n\n"
-# WORKS
+# WORKS but 3.1 errors out
 
 # 2.2) download and isntall liblua5.4.6
-echo "2.2) download and compile"
-cd ~
+echo "2.2) download and compile liblua5.4.6"
+cd ~/PRB
 curl -L -R -O https://www.lua.org/ftp/lua-5.4.6.tar.gz
 tar zxf lua-5.4.6.tar.gz
 cd lua-5.4.6
 make linux # or make macos, depending on your system
-make INSTALL_TOP=$HOME install
-export PKG_CONFIG_PATH=$HOME/lib/pkgconfig:$PKG_CONFIG_PATH
-export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
-export C_INCLUDE_PATH=$HOME/include:$C_INCLUDE_PATH
+make INSTALL_TOP=$HOME/PRB install # install in $HOME/PRB
+export PKG_CONFIG_PATH=$HOME/PRB/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$HOME/PRB/lib:$LD_LIBRARY_PATH
+export C_INCLUDE_PATH=$HOME/PRB/include:$C_INCLUDE_PATH
 echo -e "\n\n"
 # WORKS but 3.1 errors out 
 
