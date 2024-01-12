@@ -30,6 +30,7 @@ export LD_LIBRARY_PATH=$HOME/readline/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$HOME/readline/lib/pkgconfig:$PKG_CONFIG_PATH
 export C_INCLUDE_PATH=$HOME/readline/include:$C_INCLUDE_PATH
 echo -e "\n\n"
+# WORKS
 
 # 2.2) download and isntall liblua5.4.6
 echo "2.2) download and compile"
@@ -43,6 +44,7 @@ export PKG_CONFIG_PATH=$HOME/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH=$HOME/include:$C_INCLUDE_PATH
 echo -e "\n\n"
+# WORKS but 3.1 errors out 
 
 #  Installing non-pip dependencies
 ## 3.1) Install nHUSH
