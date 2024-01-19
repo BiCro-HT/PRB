@@ -14,7 +14,7 @@ If you don't have access, zafer.kosar@external.fht.org
 git clone https://github.com/BiCro-HT/PRB.git ~/PRB
 cd ~/PRB
 openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf -
-bash ~/PRB/install.sh
+source ~/PRB/install.sh
 
 ```
 
@@ -44,7 +44,7 @@ openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xz
 4. Run the install.sh
 
 ```shell
-bash ~/PRB/install.sh
+source ~/PRB/install.sh
 ```
 
 ## USAGE TIP
@@ -52,19 +52,7 @@ bash ~/PRB/install.sh
 Note: For now this project depends on the python to use it you have to load the modules
 
 ```shell
-export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH
 module load python/3.11.5
 module load python-3.11.5/py-pip/23.0
-
 python3 --version
-
-```
-
-## A Quick fix to PATH warning
-
-If you're getting `/home/name.lastname/.local/bin not on the PATH` warning
-
-```shell
-export PATH=~/.local/bin:$PATH
-
 ```
