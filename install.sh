@@ -4,8 +4,7 @@
 # Pre-requisites:
 export PATH=$HOME/.local/bin:$PATH
 PRBDIR=$HOME/PRB
-mkdir oligoarrayaux
-mv $PRBDIR/oligoarrayaux-3.8-1.x86_64.rpm $PRBDIR/oligoarrayaux/oligoarrayaux-3.8-1.x86_64.rpm
+
 # tried this part: SUCCESS
 
 # move things inside PRB/PRB/ to PRB/
@@ -66,6 +65,13 @@ cd $PRBDIR
 ### tried this part: SUCCESS
 
 # PRINT RESULTS
+pip show probe_design
+pip show ifpd2q
+pip show oligo_melting
+which hushp
+which escafish
+which hybrid-min
+
 
 
 # THIS PART IS NO longer necessary as nHUSH will be installed directly as a module for HPC
