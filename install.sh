@@ -65,13 +65,13 @@ cd $PRBDIR
 ### tried this part: SUCCESS
 
 # PRINT RESULTS
-pip show probe_design
-pip show ifpd2q
-pip show oligo_melting
-which hushp
-which escafish
-which hybrid-min
-
+pip show probe_design >> $PRBDIR/completion.log
+pip show ifpd2q >> $PRBDIR/completion.log 
+pip show oligo_melting >> $PRBDIR/completion.log
+which hushp >> $PRBDIR/completion.log
+which escafish >> $PRBDIR/completion.log
+which hybrid-min >> $PRBDIR/completion.log
+cat $PRBDIR/completion.log
 
 
 # THIS PART IS NO longer necessary as nHUSH will be installed directly as a module for HPC
