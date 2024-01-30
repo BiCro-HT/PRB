@@ -2,6 +2,7 @@
 # Full Installation of Q.probe_design and its dependencies
 
 # Pre-requisites:
+echo '>>> probe_design and dependencies starts here>>>' >> $HOME/.bashrc
 if ! grep -q "export PATH=\$HOME/.local/bin:\$PATH" $HOME/.bashrc; then
   echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.bashrc
   source $HOME/.bashrc
@@ -139,3 +140,4 @@ echo "export PATH=$PATH:$HOME/PRB/nHUSH/bin/" >> $HOME/.bashrc
 source $HOME/.bashrc
 echo -e "\n\n"
 '
+echo '<<< probe_design ends here <<<' >> $HOME/.bashrc
