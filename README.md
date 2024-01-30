@@ -13,7 +13,7 @@ If you don't have access, zafer.kosar@external.fht.org
 ```shell
 git clone https://github.com/BiCro-HT/PRB.git ~/PRB
 cd ~/PRB
-openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf -
+openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf - 2>/dev/null
 source ~/PRB/install.sh
 
 ```
@@ -37,7 +37,7 @@ cd ~/PRB
 3. Unzip Encrypted tar.gz file into this directory
 
 ```shell
-openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf -
+openssl enc -d -aes-256-cbc -pass pass:your_password -in PRB.tar.gz.enc | tar xzf - 2>/dev/null
 ```
 
 
@@ -49,10 +49,8 @@ source ~/PRB/install.sh
 
 ## USAGE TIP
 
-Note: For now this project depends on the python to use it you have to load the modules
+Note: For now this project depends on the conda python env named *probe*
 
 ```shell
-module load python/3.11.5
-module load python-3.11.5/py-pip/23.0
-python3 --version
+conda activate probe
 ```

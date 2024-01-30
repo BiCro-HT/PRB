@@ -46,7 +46,7 @@ echo -e "\n\n"
 
 # 5) load python 3.11.5, requires >=python3.10
 #echo 'export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH' >> $HOME/.bashrc #for python
-conda conda create -n probe python=3.11.5
+conda create -n probe python=3.11.5 -y
 conda activate probe
 conda install pip
 echo 'export MODULEPATH=/share/apps/spack/latest-2024-01-17/modules-files/linux-centos8-skylake_avx512:$MODULEPATH' >> $HOME/.bashrc # for nhush
