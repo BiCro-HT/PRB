@@ -2,7 +2,10 @@
 # Full Installation of Q.probe_design and its dependencies
 
 # Pre-requisites:
-export PATH=$HOME/.local/bin:$PATH
+if ! grep -q "export PATH=\$HOME/.local/bin:\$PATH" $HOME/.bashrc; then
+  echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.bashrc
+  source $HOME/.bashrc
+fi
 PRBDIR=$HOME/PRB
 
 # tried this part: SUCCESS
@@ -41,10 +44,14 @@ echo -e "\n\n"
 # tried this part: SUCCESS
 
 # 5) load python 3.11.5, requires >=python3.10
-echo "export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH" >> $HOME/.bashrc
+echo 'export MODULEPATH=/share/apps/spack/new_spack/latest/modules-files/linux-centos8-skylake_avx512:$MODULEPATH' >> $HOME/.bashrc #for python
+echo 'export MODULEPATH=/share/apps/spack/latest-2024-01-17/modules-files/linux-centos8-skylake_avx512:$MODULEPATH' >> $HOME/.bashrc # for nhush
 source $HOME/.bashrc
+# 5.1) load python 3.11.5, requires >=python3.10
 module load python/3.11.5
 module load python-3.11.5/py-pip/23.0
+# 5.2) load nhush
+module load nhush
 echo -e "python3 --version\n$(python3 --version)" # just to show python version
 echo -e "\n\n"
 ## tried this part: SUCCESS
@@ -70,7 +77,8 @@ pip show ifpd2q >> $PRBDIR/completion.log
 pip show oligo_melting >> $PRBDIR/completion.log
 which hushp >> $PRBDIR/completion.log
 which escafish >> $PRBDIR/completion.log
-which hybrid-min >> $PRBDIR/completion.log
+which hybrid-min >> $PRBDIR/completion.log # oligoarrayaux
+which nhush >> $PRBDIR/completion.log
 cat $PRBDIR/completion.log
 
 
